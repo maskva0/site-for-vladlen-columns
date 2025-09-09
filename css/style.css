@@ -1,0 +1,135 @@
+#mainback {
+  background-color:#edea99;    
+}
+
+#man {
+  position: fixed;       /* Закрепляет изображение */
+  bottom: 0;             /* Прижимает к нижней части окна */
+  left: 313px;            /* Смещает изображение левее (можно менять значение) */
+  width: 70px;          /* Уменьшает размер (можно указать % или rem/em) */
+  height: auto;          /* Сохраняет пропорции */
+  z-index: 1000;         /* Чтобы было поверх других элементов при необходимости */
+}
+
+#back {
+  position: fixed;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  width: 100vw;           /* Растягивает на всю ширину окна */
+  min-width: 100vw;       /* Минимальная ширина — ширина окна */
+  height: 100vh;
+  z-index: -1;
+  pointer-events: none;
+  object-fit: cover;
+  max-width: 100vw;
+  max-height: 100vh;
+}
+
+#stone {
+  position: fixed;
+  bottom: 0px; /* было 0, стало ниже */
+  left: 10px;   /* было px, стало левее */
+  width: 100%; /* Ширина камня */
+  height: auto; /* Автоматическая высота для сохранения пропорций */
+  z-index: 1000; /* Поверх других элементов */
+}
+
+#title {
+  font-size: 100px;
+  font-family: "Times New Roman";
+  color: rgb(82, 255, 0);
+  line-height: 1.2;
+  text-align: justifyRight; /* Неправильное значение - должно быть justify, right, left, center или justify-all */
+  text-shadow: 0px 3px 16px rgba(253, 35, 15, 0.75);
+  
+  /* Абсолютное позиционирование */
+  position: absolute;
+  left: 320.019px;
+  top: -68.816px;
+  width: 2515.962px;
+  height: auto;
+  z-index: 52;
+}
+
+
+#backgallery {
+  position: fixed;      /* Лучше использовать absolute для адаптивности */
+  top: 0;
+  left: 0;
+  width: 100vw;            /* Занимает всю ширину окна */
+  height: 100vh;           /* Занимает всю высоту окна */
+  min-width: 100vw;        /* Минимальная ширина — ширина окна */
+  min-height: 100vh;       /* Минимальная высота — высота окна */
+  z-index: -1;             /* На задний план */
+  pointer-events: none;    /* Не мешает взаимодействию с другими элементами */
+}
+#galleryman {
+  position: fixed;
+  top: 0;
+  left: -3vw;
+  width: 100vw;
+  height: 100vh;
+  object-fit: contain; /* Сохраняет пропорции, не обрезает */
+  z-index: 9998; /* Самый высокий слой */
+  animation: shake 0.3s infinite linear;
+}
+
+
+@keyframes shake {
+  0%   { transform: translate(0px, 0px); }
+  25%  { transform: translate(2px, -2px); }
+  50%  { transform: translate(-2px, 2px); }
+  75%  { transform: translate(2px, 2px); }
+  100% { transform: translate(0px, 0px); }
+}
+
+@media (max-width: 900px) {
+  #galleryman {
+    width: 100vw;
+    height: 100vh;
+    object-fit:   cover;
+  }
+}
+
+@media (max-width: 600px) {
+  #galleryman {
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    animation: shake 0.2s infinite linear; /* чуть быстрее дрожание на телефоне */
+  }
+  #man {
+    left: 10px;
+    width: 40px;
+  }
+  #backgallery,
+  #back {
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+  }
+}
+
+/* Центрирование блока library */
+#library {
+  position: fixed;
+  top: 55%; /* было 50%, стало ниже */
+  left: 47.5%;
+  transform: translate(-50%, -50%) scale(0.5);
+  z-index: 1001; /* выше фона, но ниже galleryman */
+  height: 127.5vh; /* новая высота */
+  width: 111vw;
+}
+
+#backbook {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  z-index: -1;
+  pointer-events: none;
+}
