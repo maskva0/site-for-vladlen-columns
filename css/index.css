@@ -45,6 +45,7 @@ body {
 
 /* ФОН ТАБЛИЦЫ через псевдо-слой — закрывает ВСЮ площадь, включая крайние ячейки */
 .table1::before{
+  border-collapse: collapse;
   content: "";
   position: absolute;
   inset: 0;
@@ -55,11 +56,11 @@ body {
 
 /* Заголовки оставляем как были (разброс, тень и т.п.) */
 th{
-  color:#873800;
+  color:red;
   font-size:20px;
   text-align:center;
   padding:10px 12px;
-  text-shadow:1px 1px 2px rgb(0,204,102);
+  text-shadow:2px 2px 2px rgb(0,204,102);
 }
 
 /* “Разброс” */
@@ -72,18 +73,18 @@ th{
 
 /* ГРАНИЦЫ как в твоём оригинале: 
    горизонтальные — solid red; вертикальные — double red */
-th,td{
+td{
   padding:8px 12px;
   text-align:center;
   color:#2a1a00;
-  background: transparent;             /* чтобы просвечивал общий фон из ::before */
-  border-top:    1px solid red;        /* горизонталь */
+  background: transparent;             /* чтобы просвечивал общий фон из ::before */       /* горизонталь */
   border-bottom: 1px solid red;
   border-left:   2px double red;       /* вертикаль */
   border-right:  2px double red;
   overflow:hidden;
   text-overflow:ellipsis;
   white-space:normal;
+  
 }
 
 /* первая колонка — левое выравнивание для длинных названий */
