@@ -1,96 +1,94 @@
-﻿/* === БАЗА: не меняю твои картинки === */
-html, body {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+﻿/* ===== База ===== */
+*, *::before, *::after { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; overscroll-behavior: none; }
 
-body {
-  background-color: #edea99;
+body{
   min-height: 100vh;
-  font-family: "Segoe UI", Tahoma, sans-serif;
-  background-image: url("../images/index/back.png"); /* как у тебя */
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-size: 100vw 100vh;        /* оставляю как было */
-  background-attachment: fixed;        /* оставляю как было */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow-x: hidden;                   /* без горизонтального скролла */
-}
-
-/* === КОНТЕЙНЕР — фон, без скроллов, растягиваем таблицу внутри === */
-/* контейнер: фон-подложка, не слишком широкий */
-.container{
-  background: center/cover no-repeat url("../images/index/headback.png");
-  width: min(92vw, 1200px);   /* ужал таблицу визуально */
-  margin: 0 auto;
-  padding: 3vw;
-  box-sizing: border-box;
-}
-
-/* таблица: коллапс, фиксированная раскладка, без собственного margin */
-.table1{
-  position: relative;           /* важно для ::before */
-  width: 100%;
-  border-collapse: collapse;
-  table-layout: fixed;
   font-family: "Times New Roman", serif;
-  font-size: 16px;
-  background: transparent;      /* фон переносим в ::before */
-  margin: 0;
-  z-index: 0;
+  background: #edea99 url("../images/index/back.png") no-repeat center/100vw 100vh fixed;
 }
 
-/* ФОН ТАБЛИЦЫ через псевдо-слой — закрывает ВСЮ площадь, включая крайние ячейки */
-.table1::before{
-  border-collapse: collapse;
-  content: "";
+/* ===== Центрирование таблицы ===== */
+.container{
+  position: fixed;         /* закрепляем контейнер во весь экран */
+  inset: 0;                /* растягиваем на весь вьюпорт */
+  display: grid;           /* центрирование содержимого */
+  place-items: center;
+  padding: 2rem;
+  background: url("../gallery/index/tableback.png") center/cover no-repeat;
+  overflow: hidden;        /* убираем внутренний скролл */
+}
+
+table{ margin: 0; }
+
+
+/* «Доска» с подложкой: держим исходные пропорции картинки */
+.board{
+  position: relative;
+  width: min(1000px, 95vw);   /* 1184×768 — размер твоей подложки на скрине */
+  aspect-ratio: 1184 / 768;
+  background: url("../images/index/tableback.png") center/contain no-repeat;
+}
+
+/* Область синего прямоугольника: подгон по процентам относительно подложки */
+.table-area{
   position: absolute;
-  inset: 0;
-  z-index: -1;
-  background: center/cover no-repeat url("../images/index/123.png");
-  /* если хочешь «размытие»/прозрачность — можно добавить opacity или фильтр */
+  top: 19%;
+  right: 5%;
+  bottom: 8%;
+  left: 6%;
+  overflow: auto;            /* если строк много — появится скролл внутри рамки */
+
 }
 
-/* Заголовки оставляем как были (разброс, тень и т.п.) */
-th{
-  color:red;
-  font-size:20px;
-  text-align:center;
-  padding:10px 12px;
-  text-shadow:2px 2px 2px rgb(0,204,102);
+/* Таблица растягивается по области и не «ломает» подложку */
+.table-area table{
+  width: 100%;
+  height: 100%;
+  border-collapse: collapse;
+  background: transparent;
 }
 
-/* “Разброс” */
-#th1{padding-left:20px;letter-spacing:1px;}
-#th2{padding-right:18px;padding-top:5px;}
-#th3{padding-left:25px;padding-top:8px;}
-#th4{padding-right:30px;padding-bottom:6px;}
-#th5{padding-top:12px;padding-left:15px;}
-#th6{padding-right:10px;padding-bottom:10px;}
-
-/* ГРАНИЦЫ как в твоём оригинале: 
-   горизонтальные — solid red; вертикальные — double red */
-td{
-  padding:8px 12px;
-  text-align:center;
-  color:#2a1a00;
-  background: transparent;             /* чтобы просвечивал общий фон из ::before */       /* горизонталь */
-  border-bottom: 1px solid red;
-  border-left:   2px double red;       /* вертикаль */
-  border-right:  2px double red;
-  overflow:hidden;
-  text-overflow:ellipsis;
-  white-space:normal;
-  
+td, th{
+  border-bottom: 2px solid red;
+  border-left: 4px double red;
+  padding: 4px 8px;
+  text-align: left;
+  vertical-align: top;
 }
 
-/* первая колонка — левое выравнивание для длинных названий */
-td:first-child{ text-align:left; }
+tr:first-child td, tr:first-child th { border-top: none; }
+tr:last-child  td, tr:last-child  th { border-bottom: none; }
+tr > :first-child  { border-left: none; }
+tr > :last-child   { border-right: none; }
 
-/* ячейка скачивания: классы вместо повторяющихся id */
-.downloadcell{ padding:6px; background:transparent; }
-.download{ display:block; width:24px; height:24px; object-fit:contain; margin:0 auto; }
 
+/*Иконка скачивания */
+.download{
+width: 60px; 
+height: auto; 
+display: block;
+}
+.downloadcell{ text-align: center; }
+
+/* Стили для ссылок */
+.title-link{
+  color: inherit;
+  text-decoration: none;     
+  cursor: default;           
+  -webkit-tap-highlight-color: transparent;
+  transition: color .15s ease, text-decoration-color .15s ease, text-shadow .15s ease;
+}
+
+@media (hover: hover){
+  .title-link:hover{
+    text-decoration: underline;   
+    text-underline-offset: 0.15em;
+    cursor: pointer;              
+  }
+}
+
+.title-link:focus-visible{
+  outline: 2px solid rgba(138,180,248,.9);
+  outline-offset: 2px;
+}

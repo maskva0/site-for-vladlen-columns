@@ -1,86 +1,129 @@
- <!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Книжки</title>
-  <link rel="stylesheet" href="css/index.css">
+  <link rel="stylesheet" href="css/index.css"/>
 </head>
-  
+
 <body>
   <div class="container">
-  <table>
-    <thead>
-      <tr>
-        <th id="th1">Произведение</th>
-        <th id="th2">а.л</th>
-        <th id="th3">Количество страниц (12пт)</th>
-        <th id="th4">дата последней редакции</th>
-        <th id="th5">Жанр</th>
-        <th id="th6">Файл для скачивания</th>
-      </tr>
-    </thead>
+    <div class="board" role="img" aria-label="Подложка страницы">
+      <div class="table-area">
+    <table>
+    <tbody>
+       <colgroup>
+          <col style="width:35%">
+          <col style="width:7%">
+          <col style="width:10%">
+          <col style="width:15%">
+          <col style="width:15%">
+          <col style="width:20%">
+        </colgroup>
+          <tr>
+            <td scope="col">Приставленный</td>
+            <td scope="col">45</td>
+            <td scope="col">646</td>
+            <td scope="col"><time datetime="2025-11-17">17.11.2025</time></td>
+            <td scope="col">Роман</td>
+            <td class="downloadcell">
+              <a class="download-link" href="files/pristavlennyi.pdf" aria-label="Скачать «Приставленный», PDF">
+                <img class="download" src="images/index/downloads.png" alt="">
+              </a>
+            </td>
+          </tr>
 
-    <tbody class="table1">
-      <tr>
-        <td>Приставленный</td>
-        <td>45</td>
-        <td>646</td>
-        <td>17.11.25</td>
-        <td>Роман</td>
-        <td class="downloadcell"><img class="download" src="images/index/downloads.png" alt="Скачать"></td>
-      </tr>
-      <tr>
-        <td>Роса</td>
-        <td>7</td>
-        <td></td>
-        <td>28.03.2025</td>
-        <td>Малый роман</td>
-        <td class="downloadcell"><img class="download" src="images/index/downloads.png" alt="Скачать"></td>
-      </tr>
-    <tr>
-      <td>Проклятие Иеремии</td>
-      <td>0,5</td>
-      <td>8</td>
-      <td>27.03.2025</td>
-      <td>Первая глава романа "Зоб" </td>
-      <td class="downloadcell"><img class="download" src="images/index/downloads.png" alt="Скачать"></td>
-    </tr>
-    <tr>
-      <td>Второе неопалимое<br>прещение земель</td>
-      <td>1</td>
-      <td>14</td>
-      <td>22.07.24</td>
-      <td>Стихотворение 5</td>
-      <td class="downloadcell"><img class="download" src="images/index/downloads.png" alt="Скачать"></td>
-    </tr>
-    <tr>
-      <td>Неспящее</td>
-      <td>1</td>
-      <td>14</td>
-      <td>08.06.24</td>
-      <td>Стихотворение 3</td>
-      <td class="downloadcell"><img class="download" src="images/index/downloads.png" alt="Скачать"></td>
-    </tr>
-    <tr>
-      <td>Граничная веригой плоть<br> Надрывом кончила свой<br> кашель</td>
-      <td>14</td>
-      <td>194</td>
-      <td>25.06.23</td>
-      <td>Предложение</td>
-      <td class="downloadcell"><img class="download" src="images/index/downloads.png" alt="Скачать"></td>
-    </tr>
-    <tr>
-      <td>Московские<br>возвышенности мне<br>всегда были приятнее,<br>кажется,<br>соответствующих духу мысли моей равнин.<br>Саму Москву же из-за<br>памяти о грубостиотца я<br>не сильно любил и даже<br>боялся</td>
-      <td>0,3</td>
-      <td>4</td>
-      <td>03.05.2024</td>
-      <td></td>
-      <td class="downloadcell"><img class="download" src="images/index/downloads.png" alt="Скачать"></td>
-    </tr>
-  </table>
-</tbody>
-</div>
-<script src="js/index.js" defer></script>
+          <tr>
+            <td>Роса</td>
+            <td>7</td>
+            <td></td>
+            <td><time datetime="2025-03-28">28.03.2025</time></td>
+            <td>Малый роман</td>
+            <td class="downloadcell">
+              <a class="download-link" href="#" aria-label="Скачать «Роса»">
+                <img class="download" src="images/index/downloads.png" alt="">
+              </a>
+            </td>
+          </tr>
+
+          <tr>
+            <td>
+              <a class="title-link"
+   href="reader.html?src=books/The_Curse_of_Jeremiah.pdf&amp;type=pdf&amp;title=Проклятье Иеремии">
+  Проклятье Иеремии
+</a>
+
+            </td>
+            <td>0,5</td>
+            <td>8</td>
+            <td><time datetime="2025-03-27">27.03.2025</time></td>
+            <td>Первая глава романа "Зоб"</td>
+            <td class="downloadcell">
+              <a class="download-link" href="#" aria-label="Скачать «Проклятье Иеремии»">
+                <img class="download" src="images/index/downloads.png" alt="">
+              </a>
+            </td>
+          </tr>
+
+          <tr>
+            <td>Второе неопалимое<br>прещение земель</td>
+            <td>1</td>
+            <td>14</td>
+            <td><time datetime="2024-07-22">22.07.2024</time></td>
+            <td>Стихотворение 5</td>
+            <td class="downloadcell">
+              <a class="download-link" href="#" aria-label="Скачать «Второе неопалимое прещение земель»">
+                <img class="download" src="images/index/downloads.png" alt="">
+              </a>
+            </td>
+          </tr>
+
+          <tr>
+            <td>Неспящее</td>
+            <td>1</td>
+            <td>14</td>
+            <td><time datetime="2024-06-08">08.06.2024</time></td>
+            <td>Стихотворение 3</td>
+            <td class="downloadcell">
+              <a class="download-link" href="#" aria-label="Скачать «Неспящее»">
+                <img class="download" src="images/index/downloads.png" alt="">
+              </a>
+            </td>
+          </tr>
+
+          <tr>
+            <td>Граничная веригой плоть<br> Надрывом кончила свой<br> кашель</td>
+            <td>14</td>
+            <td>194</td>
+            <td><time datetime="2023-06-25">25.06.2023</time></td>
+            <td>Предложение</td>
+            <td class="downloadcell">
+              <a class="download-link" href="#" aria-label="Скачать «Граничная веригой плоть…»">
+                <img class="download" src="images/index/downloads.png" alt="">
+              </a>
+            </td>
+          </tr>
+
+          <tr>
+            <td>Московские<br>возвышенности мне<br>всегда были приятнее,<br>кажется,<br>соответствующих духу мысли моей равнин.<br>Саму Москву же из-за<br>памяти о грубости отца я<br>не сильно любил и даже<br>боялся</td>
+            <td>0,3</td>
+            <td>4</td>
+            <td><time datetime="2024-05-03">03.05.2024</time></td>
+            <td></td>
+            <td class="downloadcell">
+              <a class="download-link" href="#" aria-label="Скачать «Московские возвышенности…»">
+                <img class="download" src="images/index/downloads.png" alt="">
+              </a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      </div>
+      </div>
+  </div>
+
+  <!-- Если js работал с таблицей, обнови/удали js/index.js -->
+  <script src="js/index.js" defer></script>
 </body>
 </html>
