@@ -1,68 +1,69 @@
-:root{ --fs: 18px; --maxw: 68ch; --lh: 1.6; }
+:root{
+  --bar-h: 56px;
+  /* чистая тема по умолчанию */
+  --bg: #ffffff;
+  --fg: #111111;
+  --paper: #ffffff;   /* цвет «страницы» */
+  --panel: #ffffff;   /* фон панелей */
+  --bar-bg: #f8f9fbcc;/* верхняя панель */
+  --muted: #667085;
+  --radius: 12px;
+  --shadow: 0 10px 30px #0002;
+}
+/* ТЁПЛЫЙ режим */
+.theme-warm{
+  --bg: #faf3e7;
+  --fg: #1b1410;
+  --paper: #fffaf3;
+  --panel: #fff8ee;
+  --bar-bg: #f5e9d6cc;
+}
+
 *{ box-sizing: border-box; }
-html,body{ height:100%; margin:0; }
-body{ font-family: system-ui, -apple-system, Segoe UI, Roboto, "Times New Roman", serif; }
+html,body{ height:100%; margin:0; overflow:hidden; }
+body{ background:var(--bg); color:var(--fg); font:16px/1.5 system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif; }
 
-/* Темы */
-.theme-light{ --bg:#fff; --fg:#111; --muted:#666; --bar:#f5f5f7; }
-.theme-dark { --bg:#0e0f12; --fg:#e9e9ea; --muted:#9aa; --bar:#1a1c22; }
+/* верхняя панель */
+.bar{ height:var(--bar-h); display:flex; align-items:center; gap:.75rem; padding:0 .75rem; border-bottom:1px solid #0001; background:var(--bar-bg); backdrop-filter:blur(8px); }
+.back{ text-decoration:none; font-size:18px; padding:.25rem .5rem; border-radius:8px; }
+.title{ margin:0; font-size:16px; flex:1; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.controls{ display:flex; align-items:center; gap:.5rem; }
+.btn{ border:1px solid #0001; background:#fff; padding:.35rem .6rem; border-radius:.6rem; cursor:pointer; }
+.btn:hover{ box-shadow: var(--shadow); }
+.btn-ghost{ background:transparent; border-color:transparent; }
+.btn-danger{ background:#ffe9e9; border-color:#f6c1c1; color:#7b2020; }
+.muted{ color:var(--muted); min-width:6ch; text-align:center; }
 
-/* Верхняя панель */
-.bar{ position: sticky; top:0; z-index:10; display:flex; align-items:center; gap:.75rem; padding:.75rem 1rem; background:var(--bar); border-bottom:1px solid #0001; }
-.bar-left{ min-width:7rem; }
-.bar-right{ display:flex; gap:.5rem; align-items:center; }
-.title{ margin:0; font-size:1.05rem; text-align:center; flex:1; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
-.back{ text-decoration:none; }
-.btn{ border:1px solid #0002; background:#fff; padding:.35rem .6rem; border-radius:.5rem; cursor:pointer; }
-.theme-dark .btn{ background:#222; color:#fff; border-color:#fff1; }
+/* рабочая областьM */
+.viewport{ position:relative; height:calc(100vh - var(--bar-h)); background:var(--bg); overflow:auto; }
 
-/* Область просмотра */
-.viewer{ height:calc(100vh - 56px); background:var(--bg); color:var(--fg); }
-
-/* Текстовый режим */
-.text{ max-width:var(--maxw); margin-inline:auto; padding:1rem clamp(1rem, 4vw, 2rem) 3rem; line-height:var(--lh); font-size:var(--fs); }
-.text p{ margin:0 0 1em; }
-.text h1,.text h2,.text h3{ line-height:1.25; margin:1.2em 0 .6em; }
-.text img, .text figure{ max-width:100%; height:auto; }
-
-/* PDF режим */
-.pdf{ width:100%; height:100%; border:0; background:#2b2b2b; }
-
-/* Цвета */
-body{ background:var(--bg); color:var(--fg); }
-
-/* ===== Ночной режим: инверсия текста ===== */
-/* ===== Ночной режим: инверсия текста ===== */
-.text.night{
-  /* инверсия + сдвиг оттенка, чтобы белый не уходил в сине-зелёный */
-  filter: invert(1) hue-rotate(180deg);
-}
-/* Вернём изображения и медиа к нормальным цветам (двойная инверсия) */
-.text.night img,
-.text.night video,
-.text.night svg,
-.text.night canvas,
-.text.night iframe{
-  filter: invert(1) hue-rotate(180deg);
-}
-
-/* PDF через canvas */
-.pdf-container{
-  height: calc(100vh - 56px);
+/* разворот*/
+.spread{
+  min-height:100%;
   display:grid;
-  place-items:center;
-  background:var(--bg);
-  padding:1rem;
+  grid-template-columns: max-content max-content; /* двe страницы */
+  align-items:center;
+  justify-content:center;   
+  padding:10px 12px;       
+  gap:0;                   
 }
-#pdfCanvas{
-  max-width:100%;
-  height:auto;
-  background:#fff;
-  border-radius: 14px;
-  box-shadow: 0 10px 30px #0003;
-}
-.theme-dark #pdfCanvas{ background:#111; }
+#pageLeft  { justify-self:end; }
+#pageRight { justify-self:start; }
 
-/* Ночной режим для PDF (инверсия контейнера) */
-.pdf-container.night{ filter: invert(1) hue-rotate(180deg); }
+/* канвасы-страницы */
+.spread canvas{ display:block; max-width:100%; height:auto; background:var(--paper); border-radius:10px; box-shadow:0 12px 36px #0003; }
+
+/* панель закладок */
+.bm-panel{ position:absolute; right:12px; top:12px; width:min(320px,85vw); max-height:70vh; overflow:auto; background:var(--panel); color:var(--fg); border:1px solid #0001; border-radius:10px; box-shadow:0 16px 44px #0004; }
+.bm-head,.bm-foot{ display:flex; align-items:center; justify-content:space-between; padding:.5rem .6rem; border-bottom:1px solid #0001; }
+.bm-foot{ border-top:1px solid #0001; border-bottom:0; }
+.bm-list{ list-style:none; margin:0; padding:.35rem; }
+.bm-list li{ display:flex; align-items:center; justify-content:space-between; gap:.5rem; padding:.45rem .5rem; border-radius:8px; cursor:pointer; }
+.bm-list li:hover{ background:#f4f6f8; }
+.bm-list .meta{ color:#6b7280; font-size:.85rem; }
+
+@media (max-width: 860px){
+  .spread{ grid-template-columns: max-content; }
+  #pageRight{ display:none; }
+}
 

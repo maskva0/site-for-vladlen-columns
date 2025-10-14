@@ -6,15 +6,15 @@
   <title>Книжки</title>
   <link rel="stylesheet" href="css/index.css"/>
 </head>
-
+<!-- Короче,здесь таблица -->
 <body>
   <div class="container">
     <div class="board" role="img" aria-label="Подложка страницы">
       <div class="table-area">
     <table>
     <tbody>
-       <colgroup>
-          <col style="width:35%">
+       <colgroup> <!-- ширина колонок -->
+          <col style="width:35%"> 
           <col style="width:7%">
           <col style="width:10%">
           <col style="width:15%">
@@ -22,7 +22,10 @@
           <col style="width:20%">
         </colgroup>
           <tr>
-            <td scope="col">Приставленный</td>
+            <td scope="col">
+              <a class="title-link" href="reader.html?src=books/Assigned.pdf&amp;type=pdf&amp;title=Приставленный">
+              Приставленный</a>
+            </td>
             <td scope="col">45</td>
             <td scope="col">646</td>
             <td scope="col"><time datetime="2025-11-17">17.11.2025</time></td>
@@ -35,7 +38,11 @@
           </tr>
 
           <tr>
-            <td>Роса</td>
+            <td><a class="title-link"
+   href="reader.html?src=books/Dew.pdf&amp;type=pdf&amp;title=Роса">
+  Роса
+</a>
+</td>
             <td>7</td>
             <td></td>
             <td><time datetime="2025-03-28">28.03.2025</time></td>
@@ -67,7 +74,7 @@
           </tr>
 
           <tr>
-            <td>Второе неопалимое<br>прещение земель</td>
+            <td><a class="title-link" href="reader.html?src=books/The_Second_Burning_Lands.pdf&amp;type=pdf&amp;title=Второе неополимое прещение земель">Второе неопалимое<br>прещение земель</a></td>
             <td>1</td>
             <td>14</td>
             <td><time datetime="2024-07-22">22.07.2024</time></td>
@@ -80,7 +87,7 @@
           </tr>
 
           <tr>
-            <td>Неспящее</td>
+            <td><a class="title-link" href="reader.html?src=books/Sleepless.pdf&amp;type=pdf&amp;title=Неспящее">Неспящее</a></td>
             <td>1</td>
             <td>14</td>
             <td><time datetime="2024-06-08">08.06.2024</time></td>
@@ -93,7 +100,7 @@
           </tr>
 
           <tr>
-            <td>Граничная веригой плоть<br> Надрывом кончила свой<br> кашель</td>
+            <td><a class="title-link" href="reader.html?src=books/The border_chain_flesh_with_a_tear_ended_its_cough.pdf&amp;type=pdf&amp;title=Граничная веригой плоть Надрывом кончила свой кашель">Граничная веригой плоть<br> Надрывом кончила свой<br> кашель</a></td>
             <td>14</td>
             <td>194</td>
             <td><time datetime="2023-06-25">25.06.2023</time></td>
@@ -106,7 +113,7 @@
           </tr>
 
           <tr>
-            <td>Московские<br>возвышенности мне<br>всегда были приятнее,<br>кажется,<br>соответствующих духу мысли моей равнин.<br>Саму Москву же из-за<br>памяти о грубости отца я<br>не сильно любил и даже<br>боялся</td>
+            <td><a class="title-link" href="reader.html?src=books/The_Moscow_Heights_have_always_been_more_pleasant_to_me_it_seems_than_the_corresponding_ones.pdf&amp;type=pdf&amp;title=Московские возвышенности">Московские<br>возвышенности мне<br>всегда были приятнее,<br>кажется,<br>соответствующих духу мысли моей равнин.<br>Саму Москву же из-за<br>памяти о грубости отца я<br>не сильно любил и даже<br>боялся</a></td>
             <td>0,3</td>
             <td>4</td>
             <td><time datetime="2024-05-03">03.05.2024</time></td>
@@ -123,7 +130,6 @@
       </div>
   </div>
 
-  <!-- Если js работал с таблицей, обнови/удали js/index.js -->
   <script src="js/index.js" defer></script>
 </body>
 </html>

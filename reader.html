@@ -2,40 +2,59 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Читалка</title>
   <link rel="stylesheet" href="css/reader.css" />
 </head>
-<body class="theme-light">
+<body>
   <header class="bar">
-    <nav class="bar-left">
-      <a class="back" href="index.html" aria-label="Назад к списку">← Назад</a>
-    </nav>
+    <a class="back" href="index.html" aria-label="Назад">←</a>
     <h1 id="bookTitle" class="title">Загрузка…</h1>
-    <div class="bar-right">
-      <button id="prev"     class="btn" type="button" title="Предыдущая">←</button>
-      <span id="pageInfo"   class="muted">1 / 1</span>
-      <button id="next"     class="btn" type="button" title="Следующая">→</button>
-      <button id="fitWidth" class="btn" type="button" title="По ширине">⇔</button>
-      <button id="fitPage"  class="btn" type="button" title="Вся страница">⬚</button>
-      <button id="smaller"  class="btn" type="button" title="Уменьшить (A−)">A−</button>
-      <button id="bigger"   class="btn" type="button" title="Увеличить (A+)">A+</button>
-      <button id="theme"    class="btn" type="button" title="Светлая/тёмная тема">🌓</button>
-      <button id="night"    class="btn" type="button" title="Ночной режим для PDF/текста">🌙</button>
-      <a id="openRaw" class="btn" target="_blank" rel="noopener" title="Открыть исходный файл">↗︎</a>
+    <div class="controls">
+      <button id="prev" class="btn" title="Назад (←)">←</button>
+      <span id="pageInfo" class="muted">1–2 / 0</span>
+      <button id="next" class="btn" title="Вперёд (→)">→</button>
+
+      <!-- ZOOM -->
+      <button id="zoomOut" class="btn" title="Масштаб − (−)">−</button>
+      <button id="zoomIn"  class="btn" title="Масштаб + (+)">+</button>
+
+      <!-- Тёплая тема -->
+      <button id="themeToggle" class="btn" title="Тёплый/чистый фон (T)">Тёплый</button>
+
+      <button id="bookmarkToggle" class="btn" title="Закладка (M)">☆</button>
+      <button id="bookmarkListBtn" class="btn" title="Закладки (L)">Закладки</button>
+      <a id="openRaw" class="btn" target="_blank" rel="noopener" title="Открыть PDF">↗︎</a>
     </div>
   </header>
 
-  <main class="viewer" id="viewer">
-    <div id="textContainer" class="text" hidden></div>
+  <main class="viewport">
+    <!-- Горизонтальный разворот, БЕЗ корешка -->
+    <section id="spread" class="spread">
+      <canvas id="pageLeft"></canvas>
+      <canvas id="pageRight"></canvas>
+    </section>
 
-    <!-- ВАЖНО: никакого iframe! PDF рендерим в canvas -->
-    <div id="pdfContainer" class="pdf-container" hidden>
-      <canvas id="pdfCanvas"></canvas>
-    </div>
+    <!-- Панель закладок -->
+    <aside id="bookmarkPanel" class="bm-panel" hidden>
+      <div class="bm-head">
+        <strong>Закладки</strong>
+        <button id="bookmarkClose" class="btn btn-ghost" title="Закрыть">✕</button>
+      </div>
+      <ul id="bookmarkList" class="bm-list"></ul>
+      <div class="bm-foot">
+        <button id="bookmarkClear" class="btn btn-danger" title="Удалить все">Очистить</button>
+      </div>
+    </aside>
   </main>
 
-  <!-- ВАЖНО: именно type="module" -->
-  <script type="module" src="js/reader.js"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/pdfjs-dist@3.11.174/build/pdf.min.js"></script>
+  <script>
+    pdfjsLib.GlobalWorkerOptions.workerSrc =
+      'https://cdn.jsdelivr.net/npm/pdfjs-dist@3.11.174/build/pdf.worker.min.js';
+  </script>
+
+  <script src="js/reader.js"></script>
 </body>
 </html>

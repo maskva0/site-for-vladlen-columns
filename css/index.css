@@ -1,5 +1,4 @@
-﻿/* ===== База ===== */
-*, *::before, *::after { box-sizing: border-box; }
+﻿*, *::before, *::after { box-sizing: border-box; }
 html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; overscroll-behavior: none; }
 
 body{
@@ -8,24 +7,24 @@ body{
   background: #edea99 url("../images/index/back.png") no-repeat center/100vw 100vh fixed;
 }
 
-/* ===== Центрирование таблицы ===== */
+/*  Центрирование таблицы */
 .container{
-  position: fixed;         /* закрепляем контейнер во весь экран */
-  inset: 0;                /* растягиваем на весь вьюпорт */
-  display: grid;           /* центрирование содержимого */
+  position: fixed;         
+  inset: 0;                
+  display: grid;          
   place-items: center;
   padding: 2rem;
   background: url("../gallery/index/tableback.png") center/cover no-repeat;
-  overflow: hidden;        /* убираем внутренний скролл */
+  overflow: hidden;       
 }
 
 table{ margin: 0; }
 
 
-/* «Доска» с подложкой: держим исходные пропорции картинки */
+/* «Доска» с подложкой*/
 .board{
   position: relative;
-  width: min(1000px, 95vw);   /* 1184×768 — размер твоей подложки на скрине */
+  width: min(1000px, 95vw);   
   aspect-ratio: 1184 / 768;
   background: url("../images/index/tableback.png") center/contain no-repeat;
 }
@@ -92,3 +91,5 @@ display: block;
   outline: 2px solid rgba(138,180,248,.9);
   outline-offset: 2px;
 }
+
+
